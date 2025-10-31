@@ -238,6 +238,7 @@ def generate_docx(questions, use_crewai, api_key, gemini_llm):
 # STREAMLIT UI CODE
 # ============================================
 
+# --- PAGE CONFIG ---
 st.set_page_config(
     page_title="Study Buddy AI",
     layout="wide",
@@ -245,40 +246,100 @@ st.set_page_config(
     page_icon="📚"
 )
 
-st.markdown("""
-<style>
-    .main > div {padding-top: 1rem;}
-    .block-container {padding-top: 1rem; padding-bottom: 1rem;}
-    h1 {font-size: 1.8rem !important; margin-bottom: 0.3rem !important;}
-    h2 {font-size: 1.3rem !important; margin-top: 0.5rem !important;}
-    h3 {font-size: 1.1rem !important; margin: 0.3rem 0 !important;}
-    .stTextArea textarea {font-size: 14px !important; min-height: 200px !important;}
-    div[data-testid="stButton"] button {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white; font-weight: bold; border-radius: 8px;
-        padding: 0.6rem 1.5rem; border: none;
-    }
-    .compact-header {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white; padding: 1rem; border-radius: 10px;
-        text-align: center; margin-bottom: 1rem;
-    }
-    .info-card {
-        background: #f0f2f6; padding: 0.8rem; border-radius: 8px;
-        border-left: 4px solid #667eea; margin: 0.5rem 0;
-    }
-    .stat-badge {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white; padding: 0.5rem 1rem; border-radius: 8px;
-        text-align: center; font-weight: bold;
-    }
-</style>
-""", unsafe_allow_html=True)
+# --- THEME FUNCTION ---
+def apply_theme(theme: str):
+    """Injects CSS styles for the selected theme (red, green, blue)."""
+    
+    if theme == "red":
+        header_bg = "linear-gradient(135deg, #ff9a9e 0%, #ff4b4b 100%)"
+        button_bg = "linear-gradient(135deg, #ff7b7b 0%, #ff4b4b 100%)"
+        button_hover = "linear-gradient(135deg, #ff5252 0%, #ff0000 100%)"
+        info_bg = "#fff5f5"
+        border_color = "#ff4b4b"
+        shadow_color = "rgba(255, 75, 75, 0.3)"
 
+    elif theme == "green":
+        header_bg = "linear-gradient(135deg, #a7f3d0 0%, #10b981 100%)"
+        button_bg = "linear-gradient(135deg, #34d399 0%, #10b981 100%)"
+        button_hover = "linear-gradient(135deg, #22c55e 0%, #059669 100%)"
+        info_bg = "#f0fdf4"
+        border_color = "#10b981"
+        shadow_color = "rgba(16, 185, 129, 0.3)"
+
+    else:  # blue (your original theme)
+        header_bg = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+        button_bg = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+        button_hover = "linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)"
+        info_bg = "#f0f2f6"
+        border_color = "#667eea"
+        shadow_color = "rgba(102, 126, 234, 0.3)"
+    
+    # --- Apply theme ---
+    st.markdown(f"""
+    <style>
+        .main > div {{padding-top: 1rem;}}
+        .block-container {{padding-top: 1rem; padding-bottom: 1rem;}}
+        h1 {{font-size: 1.8rem !important; margin-bottom: 0.3rem !important;}}
+        h2 {{font-size: 1.3rem !important; margin-top: 0.5rem !important;}}
+        h3 {{font-size: 1.1rem !important; margin: 0.3rem 0 !important;}}
+        .stTextArea textarea {{font-size: 14px !important; min-height: 200px !important;}}
+
+        div[data-testid="stButton"] button {{
+            background: {button_bg};
+            color: white; font-weight: bold; border-radius: 8px;
+            padding: 0.6rem 1.5rem; border: none;
+            transition: all 0.2s ease-in-out;
+        }}
+        div[data-testid="stButton"] button:hover {{
+            background: {button_hover};
+            transform: scale(1.03);
+        }}
+
+        .compact-header {{
+            background: {header_bg};
+            color: white; padding: 1.2rem; border-radius: 10px;
+            text-align: center; margin-bottom: 1rem;
+            box-shadow: 0 4px 12px {shadow_color};
+        }}
+
+        .info-card {{
+            background: {info_bg};
+            padding: 0.8rem;
+            border-radius: 8px;
+            border-left: 4px solid {border_color};
+            margin: 0.5rem 0;
+        }}
+
+        .stat-badge {{
+            background: {button_bg};
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }}
+    </style>
+    """, unsafe_allow_html=True)
+
+
+# --- THEME SELECTOR (UI) ---
+theme_choice = st.radio(
+    "🎨 Choose Theme:",
+    ["blue", "green", "red"],
+    index=0,
+    horizontal=True
+)
+
+# --- APPLY SELECTED THEME ---
+apply_theme(theme_choice)
+
+# --- HEADER ---
 st.markdown("""
 <div class="compact-header">
     <h1>📚 Study Buddy AI - Learning Assistant</h1>
-    <p style="margin:0; font-size:0.9rem; opacity:0.95;">Create Study Notes with AI | Powered by Google Gemini & Multi-Agent AI</p>
+    <p style="margin:0; font-size:0.9rem; opacity:0.95;">
+        Create Study Notes with AI | Powered by Google Gemini & Multi-Agent AI
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
