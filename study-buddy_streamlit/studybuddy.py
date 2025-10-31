@@ -459,7 +459,6 @@ with right_col:
     <div class="info-card">
     <strong>✨ Features:</strong><br>
     • AI-generated study notes<br>
-    • Excel file support<br>
     • Multi-agent analysis<br>
     • Word document export
     </div>
