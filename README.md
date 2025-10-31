@@ -1,0 +1,1 @@
+# study-buddy-ai-plug-n-play
