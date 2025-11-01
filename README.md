@@ -74,11 +74,6 @@ QueryNotes-AI is an **intelligent learning assistant** that converts your study 
 - **Editable**: Add your own notes and highlights
 - **Shareable**: Easy to share with classmates or study groups
 
-### ⚡ **Lightning Fast**
-- 2-5 seconds per question (standard mode)
-- 5-10 seconds per question (multi-agent mode)
-- Optimized for Google Gemini 2.5 Flash
-
 ### 🚀 **True Plug & Play**
 - Works **locally** on your computer
 - Works on **Databricks** platform
