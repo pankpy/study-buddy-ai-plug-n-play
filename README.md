@@ -1,7 +1,11 @@
+```
+<div align="center">
 
 # 📚 QueryNotes-AI Learning Assistant
 **Plug and Play with Databricks**
 
+</div>
+```
 
 <div align="center">
 
