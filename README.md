@@ -152,19 +152,17 @@ streamlit run streamlit_app.py
 ```
 
 ## Databricks
-🚀 Running on Databricks
-Prerequisites
-
-# Databricks Community Edition account
-Google Gemini API key (Get it free)
+Running on Databricks
+**Prerequisites**
+1. Databricks Community Edition account
+2. Google Gemini API key (Get it free)
 
 # Step-by-Step Instructions
-# 1. Create Databricks Account
-
-# Visit Databricks Community Edition
+**1. Create Databricks Account**
+  Visit Databricks Community Edition
   Sign up for a free account (if you don't have one)
-# 2. Import Repository from GitHub
-
+  
+**2. Import Repository from GitHub**
   Navigate to Workspace in the left sidebar
   Click Create → Git folder
   In the dialog box:
@@ -173,7 +171,7 @@ Google Gemini API key (Get it free)
   
   Click Create
 
-# 3. Configure API Key
+**3. Configure API Key**
 
   Open the newly created folder MyAssistant
   Locate the .env file in the folder
@@ -182,7 +180,7 @@ Google Gemini API key (Get it free)
   
        GOOGLE_API_KEY=your_actual_api_key_here
 
-# 4. Create Streamlit App
+**4. Create Streamlit App**
 
   Go to Compute → Apps in the left sidebar
   Click Create App
@@ -193,7 +191,7 @@ Google Gemini API key (Get it free)
   Main file: Select streamlit_app.py
   Click Create
 
-# 5. Deploy the Application
+**5. Deploy the Application**
 
   Click the Deploy button
   Select deployment settings (default settings should work)
@@ -201,7 +199,7 @@ Google Gemini API key (Get it free)
   Wait for deployment process to complete (usually 2-5 minutes)
   Status will change from "Deploying" to "Running"
 
-# 6. Access Your Application
+**6. Access Your Application**
 
   Once deployment is complete, click the Running link or Open App button
   Your Study Buddy AI application will open in a new tab
