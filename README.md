@@ -28,7 +28,7 @@ QueryNotes-AI is an **intelligent learning assistant** that converts your study 
 
 **Perfect for:** Students • Educators • Exam Preparation • Self-learners • Interview Prep
 
-![Screenshot](https://github.com/user-attachments/assets/d9f4681d-38b6-4123-b92d-2c8e36d5c18a)
+![Screenshot](image.jpg)
 
 
 ---
