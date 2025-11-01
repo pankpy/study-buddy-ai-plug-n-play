@@ -430,9 +430,37 @@ Row 51: (Maximum 50 questions)
 3. **Clear Intent**: What, how, why, explain, describe
 4. **Appropriate Scope**: Not too broad, not too narrow
 ---
+
+## ⚠️ Limitations
+
+- **General LLM Only**: Uses Google Gemini's general knowledge base. Cannot upload documents or textbooks for reference (RAG feature planned for future release).
+- **Processing Time**: 
+  - Standard mode: ~2-5 seconds per question
+  - Multi-agent mode: ~30 seconds per question
+  - Recommended: Up to 50 questions per session for optimal experience
+- **Language Support**: English only. Other languages may not produce reliable results.
+- **No Visual Content**: Generated answers are text-only. Images, diagrams, and charts are not included in the output.
+- **Answer Accuracy**: Responses are AI-generated and may contain errors. Always verify important information with authoritative sources.
+- **API Rate Limits**: Subject to Google Gemini API free tier limits. Heavy usage may require wait times.
+
+---
+**Note**: This tool is designed as a study aid, not a replacement for textbooks, lectures, or professional tutoring. Use responsibly and follow your institution's academic integrity policies.
+
+---
+
+## 🔮 Planned Features
+
+- Document upload with RAG (Retrieval-Augmented Generation)
+- PDF export option
+- Visual diagram generation
+- Multi-language support
+- Parallel processing for faster batch operations
+
+---
+
 ## 📄 License
 
-MIT License - Free to use for educational purposes
+MIT License - Free to use for educational and personal purposes
 
 ---
 <div align="center">
