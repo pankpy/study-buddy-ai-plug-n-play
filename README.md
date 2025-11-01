@@ -1,5 +1,7 @@
 
 # 📚 QueryNotes-AI Learning Assistant
+**Plug and Play with Databricks**
+
 
 <div align="center">
 
@@ -435,8 +437,8 @@ Row 51: (Maximum 50 questions)
 
 - **General LLM Only**: Uses Google Gemini's general knowledge base. Cannot upload documents or textbooks for reference (RAG feature planned for future release).
 - **Processing Time**: 
-  - Standard mode: ~2-5 seconds per question
-  - Multi-agent mode: ~30 seconds per question
+  - Standard mode: ~10-30 seconds per question
+  - Multi-agent mode: ~60-80 seconds per question
   - Recommended: Up to 50 questions per session for optimal experience
 - **Language Support**: English only. Other languages may not produce reliable results.
 - **No Visual Content**: Generated answers are text-only. Images, diagrams, and charts are not included in the output.
