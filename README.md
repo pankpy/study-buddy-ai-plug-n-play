@@ -173,7 +173,7 @@ Running on Databricks
 
 **3. Configure API Key**
 
-  Open the newly created folder MyAssistant
+  Open the newly created folder
   Locate the .env file in the folder
   Click to open .env file
   Replace the placeholder with your actual Gemini API key:
@@ -187,8 +187,7 @@ Running on Databricks
   Select Create new app → Create a new custom app
   In the configuration:
   App name: QueryNotes AI (or your preferred name)
-  Source folder: Select the MyAssistant folder you created from Git
-  Main file: Select streamlit_app.py
+  Source folder: Select the folder you created from Git
   Click Create
 
 **5. Deploy the Application**
