@@ -216,7 +216,7 @@ Running on Databricks
 
 **"Module not found"**
 - Run: `pip install -r requirements.txt`
-- Activate virtual environment
+- Activate virtual environment (if using locally)
 - Check Python version (3.8+)
 
 **Excel upload fails**
