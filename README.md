@@ -155,76 +155,60 @@ streamlit run streamlit_app.py
 🚀 Running on Databricks
 Prerequisites
 
-Databricks Community Edition account
+# Databricks Community Edition account
 Google Gemini API key (Get it free)
 
-Step-by-Step Instructions
-1. Create Databricks Account
+# Step-by-Step Instructions
+# 1. Create Databricks Account
 
-Visit Databricks Community Edition
-Sign up for a free account (if you don't have one)
+# Visit Databricks Community Edition
+  Sign up for a free account (if you don't have one)
+# 2. Import Repository from GitHub
 
-2. Import Repository from GitHub
+  Navigate to Workspace in the left sidebar
+  Click Create → Git folder
+  In the dialog box:
+  
+  Git repository URL: https://github.com/pankpy/QueryNotes-AI.git
+  
+  Click Create
 
-Navigate to Workspace in the left sidebar
-Click Create → Git folder
-In the dialog box:
+# 3. Configure API Key
 
-Git repository URL: https://github.com/pankpy/QueryNotes-AI.git
-Git folder name: MyAssistant (or any name you prefer)
+  Open the newly created folder MyAssistant
+  Locate the .env file in the folder
+  Click to open .env file
+  Replace the placeholder with your actual Gemini API key:
+  
+       GOOGLE_API_KEY=your_actual_api_key_here
 
+# 4. Create Streamlit App
 
-Click Create
+  Go to Compute → Apps in the left sidebar
+  Click Create App
+  Select Create new app → Create a new custom app
+  In the configuration:
+  App name: QueryNotes AI (or your preferred name)
+  Source folder: Select the MyAssistant folder you created from Git
+  Main file: Select streamlit_app.py
+  Click Create
 
-3. Configure API Key
+# 5. Deploy the Application
 
-Open the newly created folder MyAssistant
-Locate the .env file in the folder
-Click to open .env file
-Replace the placeholder with your actual Gemini API key:
+  Click the Deploy button
+  Select deployment settings (default settings should work)
+  Confirm deployment
+  Wait for deployment process to complete (usually 2-5 minutes)
+  Status will change from "Deploying" to "Running"
 
-     GOOGLE_API_KEY=your_actual_api_key_here
+# 6. Access Your Application
 
-Save the file (Ctrl+S or Cmd+S)
-
-4. Create Streamlit App
-
-Go to Compute → Apps in the left sidebar
-Click Create App
-Select Create new app → Create a new custom app
-In the configuration:
-
-App name: QueryNotes AI (or your preferred name)
-Source folder: Select the MyAssistant folder you created from Git
-Main file: Select streamlit_app.py
-
-
-Click Create
-
-5. Deploy the Application
-
-Click the Deploy button
-Select deployment settings (default settings should work)
-Confirm deployment
-Wait for deployment process to complete (usually 2-5 minutes)
-Status will change from "Deploying" to "Running"
-
-6. Access Your Application
-
-Once deployment is complete, click the Running link or Open App button
-Your Study Buddy AI application will open in a new tab
-Start entering questions and generating notes!
-   
-### Get API Key (Free)
-
-1. Visit: https://aistudio.google.com/app/apikey
-2. Sign in with Google account
-3. Click "Create API Key"
-4. Copy the key
-5. Paste in `.env` file
+  Once deployment is complete, click the Running link or Open App button
+  Your Study Buddy AI application will open in a new tab
+  Start entering questions and generating notes!
 
 ---
-
+   
 ### Common Issues
 
 **"API Key not found"**
