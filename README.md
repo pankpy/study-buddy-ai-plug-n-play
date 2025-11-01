@@ -157,7 +157,7 @@ Running on Databricks
 1. Databricks Community Edition account
 2. Google Gemini API key (Get it free)
 
-# Step-by-Step Instructions
+# Step-by-Step Instructions for setting-up Databricks App
 **1. Create Databricks Account**
   Visit Databricks Community Edition
   Sign up for a free account (if you don't have one)
