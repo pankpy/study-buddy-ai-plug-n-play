@@ -173,6 +173,9 @@ def generate_docx(questions, use_crewai, api_key, gemini_llm):
 
     successfully_processed = 0
     failed_questions = []
+    
+    # Create a single placeholder for progress updates (CHANGE 1)
+    progress_placeholder = st.empty()
 
     for i, question in enumerate(questions):
         try:
@@ -185,7 +188,9 @@ def generate_docx(questions, use_crewai, api_key, gemini_llm):
             try:
                 answer = get_answer_with_crewai(question, gemini_llm) if use_crewai else get_answer_original(
                     question, api_key)
-                st.write(f"✅ Q{i + 1}/{len(questions)} completed {'(Multi-Agent)' if use_crewai else ''}")
+                
+                # Update progress in same location (CHANGE 1)
+                progress_placeholder.success(f"✅ Q{i + 1}/{len(questions)} completed {'(Multi-Agent)' if use_crewai else ''}")
 
                 # Add formatted answer
                 doc.add_paragraph("Answer:")
@@ -196,7 +201,7 @@ def generate_docx(questions, use_crewai, api_key, gemini_llm):
             except Exception as e:
                 error_msg = f"Error generating answer: {str(e)}"
                 doc.add_paragraph(f"Answer: {error_msg}")
-                st.error(f"❌ Q{i + 1} failed: {str(e)}")
+                progress_placeholder.error(f"❌ Q{i + 1} failed: {str(e)}")
                 failed_questions.append((i + 1, question, str(e)))
 
             # Add separator
@@ -206,7 +211,7 @@ def generate_docx(questions, use_crewai, api_key, gemini_llm):
 
         except Exception as outer_error:
             # If even adding the question fails, log it and continue
-            st.error(f"❌ Critical error at Q{i + 1}: {str(outer_error)}")
+            progress_placeholder.error(f"❌ Critical error at Q{i + 1}: {str(outer_error)}")
             failed_questions.append((i + 1, question, f"Critical error: {str(outer_error)}"))
             continue
 
@@ -217,8 +222,7 @@ def generate_docx(questions, use_crewai, api_key, gemini_llm):
     summary_run = summary_para.add_run(
         f"Successfully processed: {successfully_processed}/{len(questions)} questions"
     )
-    summary_run.font.color.rgb = RGBColor(76, 175, 80) if successfully_processed == len(questions) else RGBColor(255,
-                                                                                                                 152, 0)
+    summary_run.font.color.rgb = RGBColor(76, 175, 80) if successfully_processed == len(questions) else RGBColor(255, 152, 0)
 
     if failed_questions:
         doc.add_paragraph()
@@ -228,12 +232,21 @@ def generate_docx(questions, use_crewai, api_key, gemini_llm):
             fail_run = fail_para.add_run(f"Q{q_num}: {q_text[:50]}... - {error}")
             fail_run.font.color.rgb = RGBColor(244, 67, 54)
 
-    # Save file
+    # Auto-save file in current directory (CHANGE 2)
     filename = f"Study_Notes_{datetime.now().strftime('%Y%m%d_%H%M%S')}.docx"
+    
+    # Save in current working directory
     doc.save(filename)
+    
+    # Show save location
+    import os
+    full_path = os.path.abspath(filename)
+    progress_placeholder.info(f"📁 File saved: {full_path}")
+
+
+
 
     return filename, successfully_processed, len(failed_questions)
-
 
 
 # STREAMLIT UI CODE
@@ -400,10 +413,7 @@ with left_col:
         if uploaded_file:
             st.info("✅ File uploaded successfully")
 
-    st.markdown("### ⚙️ Generation Settings")
-
-    use_crewai = st.checkbox("🤖 Multi-Agent AI", value=True, help="Use 3 AI agents for better answers")
-
+    use_crewai = st.checkbox("🤖 Multi-Agent AI", value=False, help="Use 3 AI agents for better answers. For fast processing, uncheck this box.")
     # Parse Questions
     questions = []
     if text_questions:
@@ -435,7 +445,6 @@ with left_col:
 
                 if fail_count == 0:
                     st.balloons()
-                    st.success(f"🎉 All {success_count} questions processed successfully!")
                 else:
                     st.warning(f"⚠️ Completed with {success_count} successful, {fail_count} failed")
 
