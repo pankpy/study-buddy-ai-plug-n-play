@@ -19,8 +19,9 @@ streamlit
 uvicorn
 matplotlib 
 pillow
-
+websockets
 google-generativeai
 google-cloud-aiplatform
 google-cloud-bigquery
 google-cloud-storage
+
