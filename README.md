@@ -133,23 +133,29 @@ QueryNotes-AI/
 
 ---
 ## Local system
-```bash
 1. Clone or download
-git clone https://github.com/pankpy/QueryNotes-AI.git
-cd QueryNotes-AI
-
-2. Install dependencies
-pip install -r requirements.txt
+  ```
+  git clone https://github.com/pankpy/QueryNotes-AI.git
+  cd QueryNotes-AI
+ ```
+3. Create virtual environment and activate it
+  Install dependencies
+  ```
+  pip install -r requirements.txt
+  ```
 
 3. Create .env file
-echo "GOOGLE_API_KEY=your_actual_key_here" > .env
+  GOOGLE_API_KEY=your_actual_key_here
 
 4. Run application
-streamlit run streamlit_app.py
-
+  ```
+  streamlit run streamlit_app.py
+  ```
 5. Open browser
-# Go to: http://localhost:8501
-```
+
+  Go to: http://localhost:8501
+
+---
 
 ## Databricks
 Running on Databricks
