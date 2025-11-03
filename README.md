@@ -225,6 +225,13 @@ Running on Databricks
 - Start from Row 2
 - Remove empty rows
 
+**Databricks app crash issue after sometime**
+  Edit app and select
+  
+  Compute
+  Large - Up to 4 vCPUs, 12 GB memory, 1 DBU/hour
+
+
 ---
 
 ---
