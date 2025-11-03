@@ -232,18 +232,27 @@ def generate_docx(questions, use_crewai, api_key, gemini_llm):
             fail_run = fail_para.add_run(f"Q{q_num}: {q_text[:50]}... - {error}")
             fail_run.font.color.rgb = RGBColor(244, 67, 54)
 
-    # Auto-save file in current directory (CHANGE 2)
-    filename = f"Study_Notes_{datetime.now().strftime('%Y%m%d_%H%M%S')}.docx"
-    
-    # Save in current working directory
-    doc.save(filename)
-    
-    # Show save location
-    import os
-    full_path = os.path.abspath(filename)
-    progress_placeholder.info(f"📁 File saved: {full_path}")
+    # Auto-save file in current directory
+    if os.path.exists("/app/python/source_code/"): # removed info message from this portion 
+        filename = f"Study_Notes_{datetime.now().strftime('%Y%m%d_%H%M%S')}.docx"
+        
+        # Save in current working directory
+        doc.save(filename)
+        
+        # Show save location
 
+        full_path = os.path.abspath(filename)
 
+    else:
+        filename = f"Study_Notes_{datetime.now().strftime('%Y%m%d_%H%M%S')}.docx"
+        
+        # Save in current working directory
+        doc.save(filename)
+        
+        # Show save location
+
+        full_path = os.path.abspath(filename)
+        progress_placeholder.info(f"📁 File saved: {full_path}")
 
 
     return filename, successfully_processed, len(failed_questions)
@@ -432,6 +441,15 @@ with left_col:
     questions = questions[:50]
 
     if st.button("🚀 Generate My Study Notes Now!", use_container_width=True):
+        try:
+            model = genai.GenerativeModel(model_name="gemini-2.5-flash")
+            response = model.generate_content("Say 'OK'")
+            st.success("✅ Connection OK!")
+        except Exception as e:
+            st.error(f"❌ Failed: {e}")
+            st.stop()
+
+        
         if not api_key:
             st.warning("⚠️ Please enter your Gemini API key")
         elif not questions:
