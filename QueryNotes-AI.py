@@ -444,7 +444,7 @@ with left_col:
         try:
             model = genai.GenerativeModel(model_name="gemini-2.5-flash")
             response = model.generate_content("Say 'OK'")
-            st.success("✅ Connection OK!")
+            # st.success("✅ Connection OK!")
         except Exception as e:
             st.error(f"❌ Failed: {e}")
             st.stop()
